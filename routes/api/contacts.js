@@ -4,6 +4,18 @@ const Joi = require("joi");
 
 const contactsOperations = require("../../models/contacts");
 
+// const mongoose = require("mongoose");
+
+// const dotenv = require("dotenv");
+// dotenv.config();
+
+// const {DB_HOST} = process.env;
+// console.log(DB_HOST);
+
+// mongoose.connect(DB_HOST)
+//   .then(() => console.log('Database connection successful'))
+//   .catch(console.log("Database NO connection successful"));
+
 const contactSchema = Joi.object({
   name: Joi.string()
     .min(3)
@@ -38,7 +50,7 @@ router.get("/:contactId", async (req, res, next) => {
     next(error);
   }
 });
-
+ 
 router.post("/", async (req, res, next) => {
   try {
     const { error } = contactSchema.validate(req.body);
